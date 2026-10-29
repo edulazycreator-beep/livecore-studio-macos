@@ -1,0 +1,132 @@
+name: Build macOS Application & Package DMG
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-package-dmg:
+    name: Build LiveCore Studio (.app + .dmg) on macOS
+    runs-on: macos-15
+    timeout-minutes: 30
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: 2. Display macOS, Xcode, and Swift Toolchain Versions
+        run: |
+          echo "=== macOS System Version ==="
+          sw_vers
+          uname -a
+          echo "=== Available Xcode Installations ==="
+          ls -la /Applications | grep -i Xcode || true
+          echo "=== Active Xcode & Swift Version ==="
+          xcodebuild -version
+          swift --version
+
+      - name: 3. Select Compatible Xcode Toolchain
+        run: |
+          if [ -d "/Applications/Xcode_16.2.app" ]; then
+            sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          elif [ -d "/Applications/Xcode_16.0.app" ]; then
+            sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: 4. Resolve Swift Package Dependencies
+        run: |
+          swift package resolve
+          xcodebuild -project LiveCoreStudio.xcodeproj -scheme LiveCoreStudio -showBuildSettings | grep -E "PRODUCT_BUNDLE_IDENTIFIER|MACOSX_DEPLOYMENT_TARGET|PRODUCT_NAME"
+
+      - name: 5. Run Unit Tests (XCTest Suite)
+        run: |
+          swift test --parallel
+
+      - name: 6. Build Native Release Application Bundle (.app)
+        run: |
+          xcodebuild \
+            -project LiveCoreStudio.xcodeproj \
+            -scheme LiveCoreStudio \
+            -configuration Release \
+            -sdk macosx \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: 7. Validate .app Bundle & Mach-O Executable
+        run: |
+          APP_PATH="build/DerivedData/Build/Products/Release/LiveCoreStudio.app"
+          EXEC_PATH="${APP_PATH}/Contents/MacOS/LiveCoreStudio"
+          PLIST_PATH="${APP_PATH}/Contents/Info.plist"
+
+          test -d "${APP_PATH}"
+          test -f "${EXEC_PATH}"
+          test -x "${EXEC_PATH}"
+          test -f "${PLIST_PATH}"
+
+          echo "Bundle Identifier: $(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "${PLIST_PATH}")"
+          file "${EXEC_PATH}"
+          otool -L "${EXEC_PATH}"
+
+      - name: 8. Package LiveCore-Studio.dmg & Verify Mountability
+        run: |
+          chmod +x scripts/package-dmg.sh
+          ./scripts/package-dmg.sh "build/DerivedData/Build/Products/Release/LiveCoreStudio.app"
+
+      - name: 9. Write Build & Checksum Report to GitHub Step Summary
+        run: |
+          DMG_FILE="dist/LiveCore-Studio.dmg"
+          SHA256_VAL="$(awk '{print $1}' dist/LiveCore-Studio.dmg.sha256)"
+          SIZE_BYTES="$(stat -f%z "${DMG_FILE}")"
+
+          {
+            echo "## LiveCore Studio for macOS — Build & Packaging Summary"
+            echo ""
+            echo "| Property | Value |"
+            echo "| :--- | :--- |"
+            echo "| **Application Name** | \`LiveCore Studio\` |"
+            echo "| **Bundle Identifier** | \`com.livecore.studio\` |"
+            echo "| **Runner OS** | \`$(sw_vers -productName) $(sw_vers -productVersion) ($(uname -m))\` |"
+            echo "| **Xcode Version** | \`$(xcodebuild -version | tr '\n' ' ')\` |"
+            echo "| **DMG Output Path** | \`${DMG_FILE}\` |"
+            echo "| **DMG Size (Bytes)** | \`${SIZE_BYTES}\` |"
+            echo "| **SHA-256 Checksum** | \`${SHA256_VAL}\` |"
+            echo "| **Signing Status** | Ad-hoc / Unsigned Development DMG (see docs for Developer ID & Notarization) |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 10. Upload LiveCore-Studio.dmg Artifact
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        with:
+          name: LiveCore-Studio-macOS-DMG
+          path: |
+            dist/LiveCore-Studio.dmg
+            dist/LiveCore-Studio.dmg.sha256
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: 11. Publish GitHub Release on Version Tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
+        with:
+          files: |
+            dist/LiveCore-Studio.dmg
+            dist/LiveCore-Studio.dmg.sha256
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

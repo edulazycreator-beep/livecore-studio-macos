@@ -1,0 +1,255 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000012B00000100000001 /* LiveCoreStudioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000012B00000100000001 /* LiveCoreStudioApp.swift */; };
+		A10000022B00000100000001 /* BroadcastModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000022B00000100000001 /* BroadcastModels.swift */; };
+		A10000032B00000100000001 /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000032B00000100000001 /* CaptureManager.swift */; };
+		A10000042B00000100000001 /* MetalCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000042B00000100000001 /* MetalCompositor.swift */; };
+		A10000052B00000100000001 /* AudioMixerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000052B00000100000001 /* AudioMixerEngine.swift */; };
+		A10000062B00000100000001 /* VideoToolboxEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000062B00000100000001 /* VideoToolboxEncoder.swift */; };
+		A10000072B00000100000001 /* RTMPStreamEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000072B00000100000001 /* RTMPStreamEngine.swift */; };
+		A10000082B00000100000001 /* ProductionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000082B00000100000001 /* ProductionController.swift */; };
+		A10000092B00000100000001 /* MainWorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000092B00000100000001 /* MainWorkspaceView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20000012B00000100000001 /* LiveCoreStudioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/LiveCoreStudioApp.swift; sourceTree = SOURCE_ROOT; };
+		A20000022B00000100000001 /* BroadcastModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/Models/BroadcastModels.swift; sourceTree = SOURCE_ROOT; };
+		A20000032B00000100000001 /* CaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/Engine/CaptureManager.swift; sourceTree = SOURCE_ROOT; };
+		A20000042B00000100000001 /* MetalCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/Engine/MetalCompositor.swift; sourceTree = SOURCE_ROOT; };
+		A20000052B00000100000001 /* AudioMixerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/Engine/AudioMixerEngine.swift; sourceTree = SOURCE_ROOT; };
+		A20000062B00000100000001 /* VideoToolboxEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/Engine/VideoToolboxEncoder.swift; sourceTree = SOURCE_ROOT; };
+		A20000072B00000100000001 /* RTMPStreamEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/Engine/RTMPStreamEngine.swift; sourceTree = SOURCE_ROOT; };
+		A20000082B00000100000001 /* ProductionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/Engine/ProductionController.swift; sourceTree = SOURCE_ROOT; };
+		A20000092B00000100000001 /* MainWorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCoreStudio/Sources/Views/MainWorkspaceView.swift; sourceTree = SOURCE_ROOT; };
+		A20000102B00000100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LiveCoreStudio/Info.plist; sourceTree = SOURCE_ROOT; };
+		A20000112B00000100000001 /* LiveCoreStudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LiveCoreStudio/LiveCoreStudio.entitlements; sourceTree = SOURCE_ROOT; };
+		A30000012B00000100000001 /* LiveCoreStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveCoreStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A40000012B00000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A50000012B00000100000001 = {
+			isa = PBXGroup;
+			children = (
+				A20000012B00000100000001 /* LiveCoreStudioApp.swift */,
+				A20000022B00000100000001 /* BroadcastModels.swift */,
+				A20000032B00000100000001 /* CaptureManager.swift */,
+				A20000042B00000100000001 /* MetalCompositor.swift */,
+				A20000052B00000100000001 /* AudioMixerEngine.swift */,
+				A20000062B00000100000001 /* VideoToolboxEncoder.swift */,
+				A20000072B00000100000001 /* RTMPStreamEngine.swift */,
+				A20000082B00000100000001 /* ProductionController.swift */,
+				A20000092B00000100000001 /* MainWorkspaceView.swift */,
+				A20000102B00000100000001 /* Info.plist */,
+				A20000112B00000100000001 /* LiveCoreStudio.entitlements */,
+				A50000022B00000100000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A50000022B00000100000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A30000012B00000100000001 /* LiveCoreStudio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A60000012B00000100000001 /* LiveCoreStudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A80000022B00000100000001 /* Build configuration list for PBXNativeTarget "LiveCoreStudio" */;
+			buildPhases = (
+				A70000012B00000100000001 /* Sources */,
+				A40000012B00000100000001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiveCoreStudio;
+			productName = LiveCoreStudio;
+			productReference = A30000012B00000100000001 /* LiveCoreStudio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A90000012B00000100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					A60000012B00000100000001 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = A80000012B00000100000001 /* Build configuration list for PBXProject "LiveCoreStudio" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A50000012B00000100000001;
+			productRefGroup = A50000022B00000100000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A60000012B00000100000001 /* LiveCoreStudio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A70000012B00000100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000012B00000100000001 /* LiveCoreStudioApp.swift in Sources */,
+				A10000022B00000100000001 /* BroadcastModels.swift in Sources */,
+				A10000032B00000100000001 /* CaptureManager.swift in Sources */,
+				A10000042B00000100000001 /* MetalCompositor.swift in Sources */,
+				A10000052B00000100000001 /* AudioMixerEngine.swift in Sources */,
+				A10000062B00000100000001 /* VideoToolboxEncoder.swift in Sources */,
+				A10000072B00000100000001 /* RTMPStreamEngine.swift in Sources */,
+				A10000082B00000100000001 /* ProductionController.swift in Sources */,
+				A10000092B00000100000001 /* MainWorkspaceView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA0000012B00000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA0000022B00000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AA0000032B00000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LiveCoreStudio/LiveCoreStudio.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = LiveCoreStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.livecore.studio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA0000042B00000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LiveCoreStudio/LiveCoreStudio.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = LiveCoreStudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.livecore.studio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A80000012B00000100000001 /* Build configuration list for PBXProject "LiveCoreStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000012B00000100000001 /* Debug */,
+				AA0000022B00000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A80000022B00000100000001 /* Build configuration list for PBXNativeTarget "LiveCoreStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000032B00000100000001 /* Debug */,
+				AA0000042B00000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A90000012B00000100000001 /* Project object */;
+}
